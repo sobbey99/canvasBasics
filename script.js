@@ -12,8 +12,8 @@ window.addEventListener('resize', function(){
 });
 
 const mouse = {
-    x: null,
-    y: null,
+    x: undefined,
+    y: undefined,
 }
 
 canvas.addEventListener('click', function(e){
@@ -21,6 +21,9 @@ canvas.addEventListener('click', function(e){
     mouse.y = e.y;
     drawCircle();
 });
+
+
+
 
 function drawCircle(){
     ctx.fillStyle = 'blue';
@@ -30,4 +33,9 @@ function drawCircle(){
     ctx.fill();
 }
 
-drawCircle();
+function animate(){
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    //ctx.clearRect(start X, start Y, end X, end Y)
+    requestAnimationFrame(animate);
+    // requestAnimationFrame request a function one time in frame, but in case above in call itself over and over and creates infinity loop
+}
