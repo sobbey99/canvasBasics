@@ -11,17 +11,23 @@ window.addEventListener('resize', function(){
 
 });
 
-//Create red circle
-ctx.fillStyle = 'red';
-ctx.beginPath();
-ctx.arc(100,100, 50 , 0, Math.PI * 2);
-ctx.fill();
+const mouse = {
+    x: null,
+    y: null,
+}
 
+canvas.addEventListener('click', function(e){
+    mouse.x = e.x;
+    mouse.y = e.y;
+    drawCircle();
+});
 
-//Create red stroke circle
-ctx.fillStyle = 'red';
-ctx.strokeStyle = 'red';
-ctx.beginPath();
-ctx.arc(300,100, 500 , 0, Math.PI * 2);
-// ctx.arc(X, Y, RADIUS, startAngle, endAngle);
-ctx.stroke();
+function drawCircle(){
+    ctx.fillStyle = 'blue';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(mouse.x,mouse.y, 50 , 0, Math.PI * 2);
+    ctx.fill();
+}
+
+drawCircle();
